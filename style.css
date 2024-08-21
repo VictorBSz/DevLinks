@@ -1,0 +1,183 @@
+* {
+  /* Aqui utilizamos o seletor universal na pg toda, oq vai mudar qlqr elemento da pag */
+  margin: 0; /* E utilizamos isso para remover o padding e o margin q o browser coloca por padrão */
+  padding: 0; /* Assim temos mais liberdade para mexer nesses atributos em outros locais */
+  box-sizing: border-box; /* Faz com q o padding no container n ignore totalmente o width acima dele e leva ambos em conta */
+}
+
+:root {
+  --text-color: white; /* aqui definimos q o var text-color = branco em qlqr parte do styles e usamos no body*/
+  --bg-url:  url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --bg-color: rgba(255, 255, 255, 0.1);
+  --bghover-color: rgba(255, 255, 255, 0.05);
+  --iconhover-color: rgba(255, 255, 255, 0.2);
+  --switchbg-url: url(./assets/moon-stars.svg)
+}
+
+.light{
+  --text-color: black; /* aqui criamos outro text color para a classe "light" */
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --bg-color: rgba(0, 0, 0, 0.05);
+  --bghover-color: rgba(0, 0, 0, 0.02);
+  --iconhover-color: rgba(0, 0, 0, 0.1);
+  --switchbg-url: url(./assets/sun.svg)
+}
+body {
+  /* Comandos base: */
+  /*background-image: url(./assets/bg-mobile.jpg); /* Import da img de background */
+  /*background-repeat: no-repeat; /* Codigo para que n se repita a img de fundo */
+  /*background-position: top center; /* pos da img de bg, top center para q a img mostre inteira e seu ponto central n seja em cima */
+  /*background-size: cover; /* Preencher o fundo todo visivel no dispositivo, e n ter sobras brancas no fundo, */
+
+  /* Background: image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover; /* Aq juntamos tds os elementos acima em uma unica prop, ou uma shorthand */
+}
+
+body * {
+  /* O '*' sinaliza q essa é um seletor universal, ou seja, vai aplicar isso a basicamente tudo q puder do body */
+  font-family: "Inter", sans-serif;
+  color: var(--text-color); /* Aqui utilizamos a variavel q criamos em root, 'color: white', usamos isso para codes q usaremos td hr */
+}
+
+#container {
+  width: 360px;
+  padding: 0 24PX; /* Caso utilizemos Padding, ele ignora o width acima, ent pra mudar isso usamos o box-sizing no seletor universal la em cima */
+  /*height: 712px;  /* Altura geralmente n é necessaria, pois no CSS, a altura segue o conteudo da pagina */
+
+  /*margin-right: auto; /* O margin right por si só n irá mudar nada devido ao auto n reconhecer nenhuma base para alterar a margem */
+  /*margin-left: auto;  /* Mas junto ao margin left, ele altera o tamanho da margem para centralizar nesse caso a borda igualmente dos lados */
+  /* Os dois margins acima podem simplesmente ser substituidos por margin:auto 
+
+  /*margin: top right bottom left - vai ter a msm função q usar os margins bottom, top, etc, outro shorthando igual o de background acima */
+  margin: 56px auto 0px; /* O Shorthand margin segue a logica de um relogio, sentido horario, top, right, bottom, left */
+  /*margin-top: 56px; /* msm função do comando acima simplificado */
+}
+
+/* profile */
+#profile {
+  text-align: center; /* Em elementos PAI, nesse caso o profile, podemos colocar o text align pra centralizar sem precisar de um display block */
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  margin: auto; /* Em elementos inline, como <a>, span e o proprio div, n é possivel utilizar o margin auto, teriamos q usar um 'display: block'  */
+  /* display: block; /* OBS: Caso tenhamos o text align no pai, n podemos usar block pois invalida o text align devido a regra de prioridade */
+}
+
+#profile p {
+  font-weight: 500;
+  font-size: 16px; /* Navegadores ja tem por padrão os 16px de size */
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* Switch */
+#switch {
+  /*border: 1px solid red; /* Lembrando q é sempre bom usar temp essa borda para entender melhor onde está o bloco de alguns elementos */
+  position: relative; /* Usamos o relative para limitar o absolute do button a somente dentro da caixa do elemento switch */
+  width: 64px; /* Aqui colocamos a mesma largura do span para limitar o position ao slider */
+
+  margin: 4px auto; /* Usamos o auto para centralizar o elemento switch com o button e slider */
+}
+#switch button {  /* button como sub selector pois é uma tag no html */
+  height: 32px;
+  width: 32px;
+  background: white var(--switchbg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%; /* Radius para arredondar o botão */
+
+  position: absolute;  /* Faz uma sobreposição de camadas, ignorando o espaçamento de outro elemento e permite movimentação absoluta na pg */
+  top: 50% ; /* Ao usar o position absolute, podemos controlar a localização do elemento na pag pra qlqr lugar com top, bottom, left e right */
+  left: 0;  /* O absolute permite q o elemento va pra qlqr lugar da pg, para limitar ao bloco, usamos o 'position: relative' no elemento pai  */
+  z-index: 1; /* Coloca o elemento no layer 1, por padrão elementos sem z index ficam no layer 0, colocando esse botao acima */
+  transform: translateY(-50%); /* Usamos 50% no transform e 50% no top, para assim ambos os elementos se alinharem */
+}
+
+.light #switch button {
+  left: initial; /* usamos esse comando para voltar ao valor inicial do left, ignorando o valor do dark mode */
+  right: 0
+}
+
+#switch span {
+  display: block; /* Block para que o span mostre corretamente, pois ele é uma tag inline */
+  height: 24px;
+  width: 64px;
+  /* surface-color-darkmode */
+  background: var(--bg-color);
+  /* stroke-color-darkmode */
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;  /* Deixa o radius perfeitamente arredondado, nesse caso o 50% n funciona pois n é um circulo perfeito */
+}
+
+/* links lista */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* Faz com q o flex coloque os elementos um abaixo do outro, por padrão o display flex é row */
+  gap: 16px;  /* Adiciona espaçamento entre os elementos da lista */
+  padding: 24px 0;
+}
+
+ul li a { /* borda de li ocupa todo o espaço do block pq é um block, ja o 'li a' ocupa so onde tem conteudo pois é um inline */
+  background: var(--bg-color); /* Cor do bg usando rgba, alpha(0.1) é a claridade, 0 preto - 255 mais clara possivel (n branco) */
+  border: 1px solid var(--stroke-color); /* Cor da borda ao redor do botao */
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;  /* Faz com que o conteudo seja alinhado no meio da bloco verticalmente, continua o mais à esquerda do bloco */
+  justify-content: center;  /* Faz com que o conteudo seja alinhado no meio do bloco horizontalmente, continua o mais à cima do bloco */
+
+  padding: 16px 24px;  /* Padding de acordo com info do FIGMA */
+
+  backdrop-filter: blur(4px); /* Adiciona um efeito de blur ao fundo do botão */
+  -webkit-backdrop-filter: blur(4px); /* Prefix para compatibilidade com alguns browsers como safari, verificar pelo caniuse.com */
+
+  text-decoration: none;  /* Retira a linha do link clicavel, tb tem outras decs como line through */
+  font-weight: 500;
+  transition: background .2s; /* Muda como serão feitas as transiçoes da pg, na ordem: 'transition: elemento(s) tempo'. Se usarmos a opção 'all', ele 'anima' tds os hovers ao carregar a pg, no nosso caso o ideal é usar somente background, para ele transicionar so o fundo dos botoes ao carregar
+  assim ele vai pegar o elemento 'background' no pseudo-selector abaixo e vai animar somente ele, podemos ver q a borda branca continua aparecendo rapidamente sem seguir o padrão de .5s colocado em transition  */
+  /*transition: transform .5s /* Podemos listar uma transição pra cada elemento se necessario */
+}
+
+ul li a:hover { /* pseudo-selector, nesse caso ao passar o mouse acima */
+    background: var(--bghover-color); /* Diminui a claridade do fundo ao passar o mouse diminuindo o alpha*/
+    border: 1.5px solid var(--text-color); /* Altera a cor da borda do botao ao passar o mouse */
+    /*transform: scale(1.2);*/
+}
+
+#social-links {
+  display: flex;
+  margin: 24px 0px;
+
+  font-size: 24px; /* Usamos font-size para aumentar as img pois esse code aumenta todos os elementos da div */
+
+  justify-content: center;
+}
+
+#social-links a {
+  display: flex;
+  padding: 16px;  /* Ao colocar o padding de 16, ele ainda mantem o gap da img, ent n usamos os 32px */
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  border-radius: 50% /* O radius fica aqui, pois se colocado em hover ele fica quadrado ao tirarmos o mouse */
+}
+
+#social-links a:hover {
+  background: var(--iconhover-color);
+
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 24px 0
+}
+

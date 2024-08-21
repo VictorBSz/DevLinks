@@ -1,0 +1,58 @@
+<!-- Pelo VSC, ao digitar ! e clicar na opção q o vsc mostra, ele ja gera toda essa config automaticamente -->
+<!DOCTYPE html>
+<!-- definindo como doc html5-->
+<html lang="pt-br"  class="">
+  <!-- elemento root com linguagem da pagina -->
+  <head>
+    <!-- tag responsável por ajustar configs q n sao visiveis para quem acessa a pag, somente a title é visivel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <!-- Codigo para as fontes do projeto, pego de fonts.google.com -->
+    <meta charset="UTF-8" />
+    <!-- define quais os conjuntos de caracteres usados, utf8 é o comum pois aceita chars especiais -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Faz a compatibilidade de browsers mais antigos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport é td q é visivel na pagina -->
+    <!-- ou seja, define q viewport (parte visivel) tenha a largura do dispositivo e scala inicial 1.0 (sem zoom por padrão)-->
+    <title>DevLinks</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <div id="container">
+        <div id="profile">
+          <!-- Divisão para foto do perfil e o @-->
+          <img src="./assets/meAvatar.png" alt="Minha foto sorrindo de oculos e fundo branco">
+          <p>@VictorBSz</p>
+        </div>
+
+        <div id="switch" onclick="toggleMode()">
+          <button></button>
+          <span></span>
+        </div>
+        
+        <ul>
+          <!-- Lista para os botões de links importantes -->
+          <li><a href="#">Inscrever-se no NLW</a></li>
+          <li><a href="#">Baixar meu e-book</a></li>
+          <li><a href="https://github.com/VictorBSz" target="_blank">Ver meu portfolio</a></li> <!-- Target blank cria nova aba ao clicar-->
+          <li><a href="https://rocketseat.com.br/explorer" target="_blank">Conheça o explorer</a></li>
+        </ul>
+        <div id="social-links">
+          <a href="http://github.com/VictorBSz" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+          <a href="http://www.linkedin.com/in/victorsouza2402/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+          <a href="https://www.instagram.com/darukinesu/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="https://www.youtube.com/@Darukinesu" target='_blank'><ion-icon name="logo-youtube"></ion-icon></a>
+          <a href="https://steamcommunity.com/id/QntQ_DRKNSz/" target='_blank'><ion-icon name="logo-steam"></ion-icon></a>
+        </div>
+      </div>  <!-- Divs são uma tag q n tem tantas mudanças de estilo qnto as outras, e sao mais faceis de manipular-->
+      <footer>
+        <p> Feito com ♥ pela <a href='https://rocketseat.com.br'>Rocketseat</a></p>
+      </footer>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>  <!-- Script dos icones da pag-->
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> <!-- Pegos pelo site IonIcons-->
+
+      <script src="./script.js"> </script>
+  </body>
+</html>
