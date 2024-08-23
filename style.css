@@ -93,14 +93,18 @@ body * {
 
   position: absolute;  /* Faz uma sobreposição de camadas, ignorando o espaçamento de outro elemento e permite movimentação absoluta na pg */
   top: 50% ; /* Ao usar o position absolute, podemos controlar a localização do elemento na pag pra qlqr lugar com top, bottom, left e right */
-  left: 0;  /* O absolute permite q o elemento va pra qlqr lugar da pg, para limitar ao bloco, usamos o 'position: relative' no elemento pai  */
+  /* left: 0;  /* O absolute permite q o elemento va pra qlqr lugar da pg, para limitar ao bloco, usamos o 'position: relative' no elemento pai  */
+  /* Aqui removemos o valor acima para adicionar o keyframe ao slide-out no fim da pagina, com o animation abaixo */
+  animation: slide-out .3s forwards; /* aqui colocamos o slide out, o tempo de duração e o 'forwards' para manter as props da anim ao acabar */
   z-index: 1; /* Coloca o elemento no layer 1, por padrão elementos sem z index ficam no layer 0, colocando esse botao acima */
   transform: translateY(-50%); /* Usamos 50% no transform e 50% no top, para assim ambos os elementos se alinharem */
 }
 
 .light #switch button {
-  left: initial; /* usamos esse comando para voltar ao valor inicial do left, ignorando o valor do dark mode */
-  right: 0
+  animation: slide-in .3s forwards;/* Aplicamos o animation à prop q criamos no keyframe e dps o tempo dela, assim como no transition */
+  /* utilizamos o forwards para q ele mantenha as props de 'to' ao acabar a animação de slide-in */
+  /* left: initial; /* usamos esse comando para voltar ao valor inicial do left, ignorando o valor do dark mode, removido para usar o keyframe */
+  /* right: 0  /* Ao inves de right, podemos usar 'left: 50%' q temos o msm resultado, usamos isso nos keyframes e tiramos esse right*/
 }
 
 #switch span {
@@ -172,7 +176,6 @@ ul li a:hover { /* pseudo-selector, nesse caso ao passar o mouse acima */
 
 #social-links a:hover {
   background: var(--iconhover-color);
-
 }
 
 footer {
@@ -192,3 +195,22 @@ footer {
     --bg-url: url(./assets/bg-desktop-light.jpg);
   }
 } /* Nota: os media queries so funciona se tivermos a linha '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' no html */
+
+/* animation */
+@keyframes slide-in{  /* keyframe é uma query q usamos para animações no site, e o 'slide-in' pode ser qlqr nome, q damos a uma animação */
+  from {  /* aqui colocamos onde vai começar a animação, esse é o slide-in, da esquerda pra direita */
+    left: 0;
+  }
+  to { /* e aqui onde vai acabar a animação */
+    left: 50%;
+  } /* criamos a '.light #switch button' com a regra animation para prosseguir com o keyframe */
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
