@@ -100,11 +100,19 @@ body * {
   transform: translateY(-50%); /* Usamos 50% no transform e 50% no top, para assim ambos os elementos se alinharem */
 }
 
+#switch button:hover {
+  outline: 8px solid var(--iconhover-color); /* outline é basicamente um border q fica 'pra fora' */
+}
+
 .light #switch button {
   animation: slide-in .3s forwards;/* Aplicamos o animation à prop q criamos no keyframe e dps o tempo dela, assim como no transition */
   /* utilizamos o forwards para q ele mantenha as props de 'to' ao acabar a animação de slide-in */
   /* left: initial; /* usamos esse comando para voltar ao valor inicial do left, ignorando o valor do dark mode, removido para usar o keyframe */
   /* right: 0  /* Ao inves de right, podemos usar 'left: 50%' q temos o msm resultado, usamos isso nos keyframes e tiramos esse right*/
+}
+
+.light #switch button:hover {
+  outline: 8px solid var(--iconhover-color); /* outline é basicamente um border q fica 'pra fora' */
 }
 
 #switch span {
