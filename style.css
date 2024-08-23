@@ -33,6 +33,7 @@ body {
 
   /* Background: image repeat position/size */
   background: var(--bg-url) no-repeat top center/cover; /* Aq juntamos tds os elementos acima em uma unica prop, ou uma shorthand */
+  height: 100vh; /* aqui, height será 100% da altura do viewport, ou seja, 100% da pg na determinada resolução, sem isso temos partes brancas na pg */
 }
 
 body * {
@@ -182,3 +183,12 @@ footer {
   padding: 24px 0
 }
 
+/* media queries */
+@media (min-width: 700px) { /* Aqui criamos um elemento para caso a largura da pg seja mais de 700px, as regras daqui devem ser colocadas */
+  :root { /* Colocamos a exata classe ou ID que se encontra a regra q queremos modificar */
+    --bg-url: url(./assets/bg-desktop.jpg); /* e modificamos o bg-url q está como var no background img */
+  }
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+} /* Nota: os media queries so funciona se tivermos a linha '<meta name="viewport" content="width=device-width, initial-scale=1.0" />' no html */
