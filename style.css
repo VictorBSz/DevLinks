@@ -135,6 +135,8 @@ ul {
   flex-direction: column; /* Faz com q o flex coloque os elementos um abaixo do outro, por padrão o display flex é row */
   gap: 16px;  /* Adiciona espaçamento entre os elementos da lista */
   padding: 24px 0;
+  backdrop-filter: blur(4px); /* Adiciona um efeito de blur ao fundo do botão */
+  -webkit-backdrop-filter: blur(4px); /* Prefix para compatibilidade com alguns browsers como safari, verificar pelo caniuse.com */
 }
 
 ul li a { /* borda de li ocupa todo o espaço do block pq é um block, ja o 'li a' ocupa so onde tem conteudo pois é um inline */
@@ -148,8 +150,7 @@ ul li a { /* borda de li ocupa todo o espaço do block pq é um block, ja o 'li 
 
   padding: 16px 24px;  /* Padding de acordo com info do FIGMA */
 
-  backdrop-filter: blur(4px); /* Adiciona um efeito de blur ao fundo do botão */
-  -webkit-backdrop-filter: blur(4px); /* Prefix para compatibilidade com alguns browsers como safari, verificar pelo caniuse.com */
+ 
 
   text-decoration: none;  /* Retira a linha do link clicavel, tb tem outras decs como line through */
   font-weight: 500;
@@ -161,7 +162,7 @@ ul li a { /* borda de li ocupa todo o espaço do block pq é um block, ja o 'li 
 ul li a:hover { /* pseudo-selector, nesse caso ao passar o mouse acima */
     background: var(--bghover-color); /* Diminui a claridade do fundo ao passar o mouse diminuindo o alpha*/
     border: 1.5px solid var(--text-color); /* Altera a cor da borda do botao ao passar o mouse */
-    /*transform: scale(1.2);*/
+    transform: scale(1.02);
 }
 
 #social-links {
@@ -179,7 +180,7 @@ ul li a:hover { /* pseudo-selector, nesse caso ao passar o mouse acima */
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
-  border-radius: 50% /* O radius fica aqui, pois se colocado em hover ele fica quadrado ao tirarmos o mouse */
+  border-radius: 50%; /* O radius fica aqui, pois se colocado em hover ele fica quadrado ao tirarmos o mouse */
 }
 
 #social-links a:hover {
