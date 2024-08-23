@@ -42,7 +42,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%; /* width para se adaptar a diferentes dispositivos com diversas larguras, evitado de quebrar o fundo e os botões */
+  max-width: 588px; /* o width 100% faz com q os elementos cresçam infinitamente em relação a largura, ent colocamos um max para evitar isso */
   padding: 0 24PX; /* Caso utilizemos Padding, ele ignora o width acima, ent pra mudar isso usamos o box-sizing no seletor universal la em cima */
   /*height: 712px;  /* Altura geralmente n é necessaria, pois no CSS, a altura segue o conteudo da pagina */
 
