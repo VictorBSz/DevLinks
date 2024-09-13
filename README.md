@@ -46,4 +46,4 @@ Esse projeto está sob a licença MIT.
 
 Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discord.gg/rocketseat)
 
-Link para visualizar o [projeto](https://victorbsz.github.io/proj-devlinks)
+Link para visualizar o [projeto](https://victorbsz.github.io/devlinks)
